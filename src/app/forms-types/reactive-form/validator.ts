@@ -1,4 +1,4 @@
-import { AbstractControl, ValidationErrors } from "@angular/forms";
+import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
 export default function CountryChecker(control:AbstractControl):ValidationErrors|null{
     if(control.value==='India'){
@@ -6,5 +6,15 @@ export default function CountryChecker(control:AbstractControl):ValidationErrors
     }
     else{
         return null
+    }
+}
+export  function WordToExclude(value:string):ValidatorFn{
+    return (control:AbstractControl):ValidationErrors|null=>{
+        if(control.value===value){
+         return {exclude:'Pls dont include this word'}
+        }
+        else{
+            return null
+        }
     }
 }
