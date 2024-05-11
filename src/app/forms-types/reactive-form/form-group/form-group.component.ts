@@ -11,13 +11,25 @@ import { FormArray, FormBuilder, FormControl, ReactiveFormsModule, Validators } 
 })
 export class FormGroupComponent {
   showErrorLable=false
+  showTheDomain=false
   formGroup=this.formBuilder.group({
     name:['',[Validators.required]],
     password:['',[Validators.minLength(6)]],
-    hobbies:this.formBuilder.array([])
+    hobbies:this.formBuilder.array([]),
+    address:this.formBuilder.group({
+      address:['',[Validators.required]],
+      state:['',[Validators.required]],
+      country:['',[Validators.required]],
+    }),
+    coder:[''],
+    domain:['']
   },)
  constructor(private formBuilder:FormBuilder) {
-  
+  this.formGroup.valueChanges.subscribe((a)=>{
+    if(a.coder==='yes'){
+      this.showTheDomain=true
+    }
+  })
  }
  adHobbies(){
   
