@@ -12,7 +12,7 @@
     </div>
     <h5>Add Some hobbies</h5>
     <ng-container formArrayName="hobbies" *ngFor="let item of arrayOfForm.controls ;let i=index">
-        <input [formControlName]="i">
+        <input placeholder="Enter your hobbies" [formControlName]="i">
     </ng-container>
     <button (click)="adHobbies()">Add</button>
     <div>
@@ -20,16 +20,20 @@
         <label>Are you a programmer?</label>
         <div class="techGuysForm">
             <label for="techguy">Yes</label>
-            <input formControlName="coder" id="techguy" type="radio" name="coder" value="yes">
+            <input formControlName="coder" id="techguy" type="radio" name="coder" value="yes" (change)="heIsaCoder()">
             <label for="nonTech">NO</label>
             <input formControlName="coder" id="nonTech" type="radio" value="no" name="coder">
         </div>
     </div> 
-    
-    <input *ngIf="showTheDomain" placeholder="Choose your domasin" list="domains">
+
+    <input *ngIf="showTheDomain" formControlName="domain" placeholder="Choose your domasin" list="domains">
     <datalist id="domains">
        <option value="webdev">Web Dev</option>
     </datalist>
+    <select *ngIf="!showTheDomain" formControlName="domain" >
+     <option value="">Do nothing</option>
+     <option value="consultant">Consultant</option>
+    </select>
     <button>Submit</button>
 </form>
 <p>

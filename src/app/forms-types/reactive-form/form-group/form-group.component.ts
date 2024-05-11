@@ -21,19 +21,23 @@ export class FormGroupComponent {
       state:['',[Validators.required]],
       country:['',[Validators.required]],
     }),
-    coder:[''],
+    coder:['no'],
     domain:['']
   },)
  constructor(private formBuilder:FormBuilder) {
   this.formGroup.valueChanges.subscribe((a)=>{
     if(a.coder==='yes'){
+      
       this.showTheDomain=true
+    }
+    else{
+      this.showTheDomain=false
     }
   })
  }
  adHobbies(){
   
-  this.arrayOfForm.push(new FormControl('hoobies'))
+  this.arrayOfForm.push(new FormControl(''))
  }
  get arrayOfForm(){
     return  this.formGroup.get('hobbies') as FormArray
@@ -41,4 +45,11 @@ export class FormGroupComponent {
  formSubmit(){
   console.log(this.formGroup.value)
  }
+ ngDoCheck(){
+  }
+  heIsaCoder(){
+    if(this.formGroup.value.coder==='yes'){
+      this.formGroup.patchValue({domain:''})
+    }
+  }
 }
