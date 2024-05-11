@@ -11,6 +11,7 @@
 </pre>
 <div class="example">
 <h4>Example</h4>
-<input placeholder="Enter something" [formControl]="input_field">
+<input placeholder="Enter something" id="name" [formControl]="input_field">
+<label for="name" *ngIf="displayError">{{errorMessage}}</label>
 <p>Input field value is {{currentValueOfForm}}</p>
 </div>
