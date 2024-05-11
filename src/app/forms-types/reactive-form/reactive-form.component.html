@@ -1,0 +1,16 @@
+<h4>Reactive Forms:-</h4>
+<p >These type of approach provide direct access to underlying form object.They are more scalable and robust</p>
+<pre >
+    To control the form using this approach we will 
+    make a instance of FormControl like this {{1+1}}
+    class ABC&#10101;
+        input_field=new FormControl('')
+        &#10101;
+    In Html file use -:
+   &lt;input [formControl]="input_field"&gt;
+</pre>
+<div class="example">
+<h4>Example</h4>
+<input placeholder="Enter something" [formControl]="input_field">
+<p>Input field value is {{currentValueOfForm}}</p>
+</div>
