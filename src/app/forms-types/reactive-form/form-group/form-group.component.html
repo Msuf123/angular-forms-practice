@@ -1,1 +1,16 @@
-<p>form-group works!</p>
+<form [formGroup]="formGroup" (submit)="formSubmit()">
+    <h4>It's a reactive login form</h4>
+    <label *ngIf="showErrorLable"></label>
+    <input formControlName="name" placeholder="Enter your name">
+    
+    <input formControlName="password" placeholder="Enter your password">
+    <h5>Add Some hobbies</h5>
+    <ng-container formArrayName="hobbies" *ngFor="let item of arrayOfForm.controls ;let i=index">
+        <input [formControlName]="i">
+    </ng-container>
+    <button (click)="adHobbies()">Add</button>
+    <button>Submit</button>
+</form>
+<p>
+    This is a formControl and here we have methods like patch vlaues set values
+</p>

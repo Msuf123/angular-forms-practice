@@ -5,11 +5,12 @@ import NumberChecker, { WordToExclude } from './validator';
 import CountryChecker from './validator';
 import { AsyncValidatorService } from './async-validator.service';
 import { AsyncValidatorSecondService } from './async-validator-second.service';
+import { FormGroupComponent } from './form-group/form-group.component';
 
 @Component({
   selector: 'app-reactive-form',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,FormsModule],
+  imports: [CommonModule,ReactiveFormsModule,FormsModule,FormGroupComponent],
   templateUrl: './reactive-form.component.html',
   styleUrl: './reactive-form.component.css'
 })
@@ -17,7 +18,7 @@ export class ReactiveFormComponent implements DoCheck {
   diasble=false
   displayError=false
   errorMessage=''
-input_field=new FormControl('',{updateOn:'change',validators:[CountryChecker,WordToExclude('lost')],asyncValidators:[this.async.validate.bind(this.async),this.asyncTwo.validate.bind(this.asyncTwo)]})
+input_field=new FormControl('',{updateOn:'change',validators:[CountryChecker,WordToExclude('lost')],asyncValidators:[this.asyncTwo.validate.bind(this.asyncTwo),this.async.validate.bind(this.async),]})
 currentValueOfForm:string|null=''
 
 constructor(private async:AsyncValidatorService,private asyncTwo:AsyncValidatorSecondService){
