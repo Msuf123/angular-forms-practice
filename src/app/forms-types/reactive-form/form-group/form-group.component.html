@@ -5,7 +5,7 @@
     
     <input formControlName="password" class="k" placeholder="Enter your password">
     <span *ngIf="showPassError">Required length{{error}}</span>
-    <div formGroupName="address">
+    <!-- <div formGroupName="address">
         <h5>Your address</h5>
         <input formControlName="address" placeholder="Enter Your address">
         <input formControlName="state" placeholder="Enter Your state">
@@ -34,7 +34,7 @@
     <select *ngIf="!showTheDomain" formControlName="domain" >
      <option value="">Do nothing</option>
      <option value="consultant">Consultant</option>
-    </select>
+    </select> -->
     <button>Submit</button>
 </form>
 <p>
