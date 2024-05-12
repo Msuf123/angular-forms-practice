@@ -1,9 +1,9 @@
-<form [formGroup]="formGroup" (submit)="formSubmit()">
+<form [formGroup]="formGroup" (submit)="formSubmit()" class="formClass">
     <h4>It's a reactive login form</h4>
     <label *ngIf="showErrorLable"></label>
     <input formControlName="name" placeholder="Enter your name">
     
-    <input formControlName="password" placeholder="Enter your password">
+    <input formControlName="password" class="k" placeholder="Enter your password">
     <div formGroupName="address">
         <h5>Your address</h5>
         <input formControlName="address" placeholder="Enter Your address">
@@ -37,5 +37,6 @@
     <button>Submit</button>
 </form>
 <p>
-    This is a formControl and here we have methods like patch vlaues set values
+    This is a formControl and here we have methods like patch vlaues set values one more important thing is that we have css classes and that css classes are applied to each and every
+    so to access those we need put class on the form then class name of the formcontrol other wise we will get the form control to evry form and also to the child element also know as form controls.
 </p>

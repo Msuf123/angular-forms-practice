@@ -25,6 +25,9 @@ export class FormGroupComponent {
     domain:['']
   },)
  constructor(private formBuilder:FormBuilder) {
+  this.formGroup.statusChanges.subscribe((a)=>{
+    console.log(a)
+  })
   this.formGroup.valueChanges.subscribe((a)=>{
     if(a.coder==='yes'){
       

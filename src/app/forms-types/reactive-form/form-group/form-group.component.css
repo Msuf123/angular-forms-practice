@@ -29,3 +29,13 @@ div{
 .techGuysForm label{
     margin-left: 10px;
 }
+ 
+/* .ng-invalid ~ .ng-valid {
+    outline: 2px solid rgb(219, 82, 82);
+} */
+ .ng-valid:not(form):not(div){
+    outline: 2px solid green; 
+}
+.ng-invalid:not(form):not(div){
+outline: 2px solid red;
+} 
