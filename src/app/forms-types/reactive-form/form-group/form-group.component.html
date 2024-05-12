@@ -4,6 +4,7 @@
     <input formControlName="name" placeholder="Enter your name">
     
     <input formControlName="password" class="k" placeholder="Enter your password">
+    <span *ngIf="showPassError">Required length{{error}}</span>
     <div formGroupName="address">
         <h5>Your address</h5>
         <input formControlName="address" placeholder="Enter Your address">
