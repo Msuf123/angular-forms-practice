@@ -23,9 +23,9 @@ export class FormGroupComponent {
   // jack=new FormGroup({name:new FormControl('')},{validators:})
  constructor(private formBuilder:FormBuilder) {
   this.formGroup.statusChanges.subscribe((a)=>{
-    console.log(this.formGroup.errors)
+    console.log                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             (this.formGroup.errors)
     let errors=this.formGroup.get('password')?.errors
-    console.log(errors)
+    console.log(errors)  
     if(errors){
      
      this.showPassError=true
@@ -48,7 +48,8 @@ export class FormGroupComponent {
   
 //   this.arrayOfForm.push(new FormControl(''))
 //  }
-//  get arrayOfForm(){
+//  get arrayOfForm(){                           
+ 
 //     return  this.formGroup.get('hobbies') as FormArray
 //  }
  formSubmit(){

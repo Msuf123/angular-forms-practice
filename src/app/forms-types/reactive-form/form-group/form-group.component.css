@@ -29,7 +29,9 @@ div{
 .techGuysForm label{
     margin-left: 10px;
 }
- 
+.ng-invalid:not(input){
+    border: 2px solid red;
+}
 .ng-invalid ~ .ng-valid {
     outline: 2px solid rgb(44, 36, 36);
 }
