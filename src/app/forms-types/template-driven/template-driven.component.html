@@ -1,1 +1,10 @@
-<p>template-driven works!</p>
+<h2>Template driven form</h2>
+<input [(ngModel)]="value" required (ngModelChange)="changes()" #model="ngModel">
+the form value is {{value}}
+<p *ngIf="model.invalid">Its required</p>
+<p *ngIf="model.hasError('customError')">This is a customError</p>
+<p>The workign of a template driven form is a little bit diffrent.In it we have a directive and then everthing happens inside of the directive</p>
+<p>To create a custom Validator in template driven form we need to follow the following steps</p>
+<ol>
+    <li>Create a directive</li>
+</ol>
