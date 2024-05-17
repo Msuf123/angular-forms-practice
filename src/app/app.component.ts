@@ -18,9 +18,9 @@ export class AppComponent {
   title = 'form-practice';
   constructor(private request:FetchService,@Inject('name') customnVals:string){
   this.request.getData().subscribe((a)=>{
-    console.log(a)
+ 
   })
-  console.log(customnVals)
+  
   
   }
 }
