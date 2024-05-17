@@ -1,5 +1,5 @@
 <div>
-    <h1>kk</h1>
+
     <form (submit)="onSubmit()" [formGroup]="form">
         <div *ngFor="let q of questions">
           <app-dynamic-form-question [question]="q" [form]="form"></app-dynamic-form-question>

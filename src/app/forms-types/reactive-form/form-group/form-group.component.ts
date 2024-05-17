@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { identityRevealedValidator } from './combinedValidator';
+import { AsyncValidatorService } from '../async-validator.service';
+import { AsyncValidatorSecondService } from '../async-validator-second.service';
 
 @Component({
   selector: 'app-form-group',
@@ -16,33 +18,36 @@ export class FormGroupComponent {
   showPassError=false
   error=''
   formGroup=new FormGroup({
-    name:new FormControl('',{validators:[Validators.required]}),
+    name:new FormControl('',{validators:[Validators.required],asyncValidators:[this.asuncVal.validate.bind(this.asuncVal),this.asyncTwo.validate.bind(this.asyncTwo)]}),
     password:new FormControl('',{validators:[Validators.minLength(6)]}),
    
   },{validators:[identityRevealedValidator]})
   // jack=new FormGroup({name:new FormControl('')},{validators:})
- constructor(private formBuilder:FormBuilder) {
-  this.formGroup.statusChanges.subscribe((a)=>{
-    console.log(this.formGroup.errors)
-    let errors=this.formGroup.get('password')?.errors
-    console.log(errors,'errors')
-    if(errors){
-     
-     this.showPassError=true
-      for(let a in errors){
-      this.error=errors[a]['requiredLength']
-    }
-  }
+ constructor(private formBuilder:FormBuilder,private asuncVal:AsyncValidatorService,private asyncTwo:AsyncValidatorSecondService) {
+  this.formGroup.get('name')?.statusChanges.subscribe((a)=>{
+    console.log(a)
   })
-//   this.formGroup.valueChanges.subscribe((a)=>{
-//     if(a.coder==='yes'){
+  // this.formGroup.statusChanges.subscribe((a)=>{
+  //   console.log(this.formGroup.errors)
+  //   let errors=this.formGroup.get('password')?.errors
+  //   console.log(errors,'errors')
+  //   if(errors){
+     
+  //    this.showPassError=true
+  //     for(let a in errors){
+  //     this.error=errors[a]['requiredLength']
+  //   }
+  // }
+  // })
+  // this.formGroup.valueChanges.subscribe((a)=>{
+  //   if(a.coder==='yes'){
       
-//       this.showTheDomain=true
-//     }
-//     else{
-//       this.showTheDomain=false
-//     }
-//   })
+  //     this.showTheDomain=true
+  //   }
+  //   else{
+  //     this.showTheDomain=false
+  //   }
+  // })
   }
 //  adHobbies(){
   

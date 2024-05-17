@@ -13,12 +13,15 @@ import { DynamicFormQuestionComponent } from '../dynamic-form-question/dynamic-f
   styleUrl: './dynamic-form.component.css'
 })
 export class DynamicFormComponent {
+
   @Input() questions: QuestionBase<string>[] | null = [];
      form!:FormGroup
      payLoad=''
      constructor(private qcs:QuestionControlService){}
      ngOnInit(){
+      if(this.questions){
       this.form=this.qcs.toFormGroup(this.questions as QuestionBase<string>[])
+    }
      }
      onSubmit(){
       console.log(this.form.value)

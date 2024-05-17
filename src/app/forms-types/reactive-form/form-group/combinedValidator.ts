@@ -5,7 +5,6 @@ export const identityRevealedValidator: ValidatorFn = (
   ): ValidationErrors | null => {
     const name = control.get('name');
     
-   console.log(name?.value)
     return name  && name.value === 'AkshatMalik'
       ? { identityRevealed: true }
       : null;

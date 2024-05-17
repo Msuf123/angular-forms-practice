@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { QuestionBase } from '../../forms-types/dynamic-form/question-base';
 import { DropdownQuestion } from '../../forms-types/dynamic-form/question-dropdown';
 import { TextboxQuestion } from '../../forms-types/dynamic-form/question-textbox';
-import { of } from 'rxjs';
+import { Observable, delay, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +46,6 @@ export class QuestionService {
           })
         ];
        
-        return of(questions.sort((a, b) => a.order - b.order));
+        return of(questions.sort((a, b) => a.order - b.order)).pipe(delay(3000));
       }
 }

@@ -13,10 +13,10 @@ import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@an
 export class CustomDirective implements Validator{
   @Input('appCustomsNAme') name:string=''
   constructor() { 
-    console.log(this.name,'k')
+    
   }
   validate(control: AbstractControl): ValidationErrors | null {
-    console.log(control.value,this.name)
+    
     if(control.value==='j'){
       return {customError:'Error'}
     }

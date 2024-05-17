@@ -7,14 +7,14 @@ import { FetchService } from './service/fetch.service';
 import { LoggerOneService } from './service/logger-one.service';
 import { DynamicFormComponent } from './forms-types/dynamic-form/dynamic-form.component';
 import { QuestionService } from './service/forms-service/question.service';
-import { Observable } from 'rxjs';
+import { Observable, delay, of } from 'rxjs';
 import { QuestionBase } from './forms-types/dynamic-form/question-base';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,FormsTypesComponent,TemplateDrivenComponent,DynamicFormComponent,AsyncPipe],
+  imports: [RouterOutlet,FormsTypesComponent,TemplateDrivenComponent,DynamicFormComponent,AsyncPipe,CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers:[{provide:'name',useValue:'kk',multi:true},{provide:'name',useFactory:()=>'fff',multi:true}]
@@ -22,12 +22,18 @@ import { AsyncPipe } from '@angular/common';
 export class AppComponent {
   title = 'form-practice';
   questions$:any
+  loading=false
+  names=of('aksaht').pipe(delay(5000))
   constructor(private questionl:QuestionService,private request:FetchService,@Inject('name') customnVals:string){
-  this.request.getData().subscribe((a)=>{
-   
-  })
   
+  this.questionl.getQuestions().subscribe((a)=>{
+    if(Array.isArray(a)&&a.length!==0){
+
+      this.loading=true
+      this.questions$=a
+    }
+  })
   this.questions$=questionl.getQuestions()
-  console.log(this.questions$)
+  
   }
 }

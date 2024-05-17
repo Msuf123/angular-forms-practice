@@ -22,17 +22,17 @@ input_field=new FormControl('',{updateOn:'change',validators:[CountryChecker,Wor
 currentValueOfForm:string|null=''
 
 constructor(private async:AsyncValidatorService,private asyncTwo:AsyncValidatorSecondService){
-  console.log(this.input_field)
+ 
   this.input_field.statusChanges.subscribe((a)=>{
-    console.log(a)
+    
     let errorObj=this.input_field.errors
     if(this.input_field.errors){
-      console.log(this.input_field.errors)
+      
       this.displayError=true
     for(let a in errorObj){
       this.errorMessage=errorObj[a]
     }
-  console.log('contians error')
+  
 
   }
   else{
