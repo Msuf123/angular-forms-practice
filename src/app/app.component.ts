@@ -5,22 +5,29 @@ import { TemplateDrivenComponent } from './forms-types/template-driven/template-
 import { HttpClient } from '@angular/common/http';
 import { FetchService } from './service/fetch.service';
 import { LoggerOneService } from './service/logger-one.service';
+import { DynamicFormComponent } from './forms-types/dynamic-form/dynamic-form.component';
+import { QuestionService } from './service/forms-service/question.service';
+import { Observable } from 'rxjs';
+import { QuestionBase } from './forms-types/dynamic-form/question-base';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,FormsTypesComponent,TemplateDrivenComponent],
+  imports: [RouterOutlet,FormsTypesComponent,TemplateDrivenComponent,DynamicFormComponent,AsyncPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers:[{provide:'name',useValue:'kk',multi:true},{provide:'name',useFactory:()=>'fff',multi:true}]
 })
 export class AppComponent {
   title = 'form-practice';
-  constructor(private request:FetchService,@Inject('name') customnVals:string){
+  questions$:any
+  constructor(private questionl:QuestionService,private request:FetchService,@Inject('name') customnVals:string){
   this.request.getData().subscribe((a)=>{
- 
+   
   })
   
-  
+  this.questions$=questionl.getQuestions()
+  console.log(this.questions$)
   }
 }
